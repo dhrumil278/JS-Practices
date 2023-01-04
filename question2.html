@@ -20,20 +20,20 @@
         $(document).ready(function () {
             $('#btn').click(function () {
                 var x = $('#fact').val();
-                if (x == 0 || x == 1) {
+                if (x == 0 || x == 1) {   // check the condition of the 0 and 1
                     $('#ans').text('1');
                 } else if (x < 0) {
-                    $('#ans').text('Please Enter positive number');
+                    $('#ans').text('Please Enter positive number'); // validation for the negative number
                 } else {
                     var result = factorial(x)
-                    $('#ans').text(result);
+                    $('#ans').text(result); // print the factorial 
                 }
             });
             function factorial(x) {
                 if (x == 0) {
                     return 1;
                 } else {
-                    return x * factorial(x - 1);
+                    return x * factorial(x - 1); // recursion function
                 }
             }
         });
