@@ -20,15 +20,20 @@
         $(document).ready(function(){
             $('#btn').click(function(){
                 var x = $('#steps').val();
-
                 var arr = [0,1];
 
-                for(var i = 2; i < x; i++){
-                    sum = arr[i-1] + arr[i-2];
-                    arr.push(sum);
+                if(x <= 0){
+                    $('#series').text('Please Enter Natural Number..! Like 1,2,3,...');
+                }else if(x == 1){
+                    $('#series').text(arr[0]);
+                }else{
+                    for(var i = 2; i < x; i++){
+                        sum = arr[i-1] + arr[i-2];
+                        arr.push(sum);
+                    }
+                    console.log(arr)
+                    $('#series').text(arr);
                 }
-                console.log(arr)
-                $('#series').text(arr);
             });
         });
     </script>
