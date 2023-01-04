@@ -9,31 +9,23 @@
     <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
     
     <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
         .main-div{
             width: 100%;
             height: calc(100vh - 16px);
             display: flex;
             justify-content: center;
         }
-        .wd-chessboard{
-            height: 100vh;
-            display: grid;
-            grid-template-columns: calc(100vw/8) calc(100vw/8) calc(100vw/8) calc(100vw/8) calc(100vw/8) calc(100vw/8) calc(100vw/8) calc(100vw/8) ;
-        }
         .chessboard{
             height: 100vh;
+            border: 2px solid red;
             display: grid;
-            grid-template-columns: calc(100vh/8) calc(100vh/8) calc(100vh/8) calc(100vh/8) calc(100vh/8) calc(100vh/8) calc(100vh/8) calc(100vh/8) ;
         }
         .cell{
-            /* width: 50px; */
             height: calc(100vh/8);
-            border: 2px solid red;
-        }
-        .wd-cell{
-            /* width: 50px; */
-            height: calc(100vw/8);
-            border: 2px solid red;
         }
         .black{
             background-color: black;
@@ -45,7 +37,8 @@
 </head>
 <body>
     <div class="main-div">
-        <div class="chessboard">
+        <div class="chessboard"> 
+            <!-- main chess board -->
 
         </div>
     </div>
@@ -53,19 +46,20 @@
         for(let i = 0; i < 8; i++){
             for(let j = 0; j < 8; j++){
                 var x = $('.chessboard');
-                x.append(`<section class="cell white" id= "${i}${j}"></section>`);
+                x.append(`<section class="cell white" id= "${i}${j}"></section>`); // set cells in the chess board
 
                 if ((i+j)%2 == 0){
-                    $(`#${i}${j}`).toggleClass('white black');
+                    $(`#${i}${j}`).toggleClass('white black');  // small cells (boxes)
                 }
             }
         }
-        if(screen.width > screen.height){
-            $('section').toggleClass('cell wd-cell');
-            $('section').toggleClass('chessboard wd-chessboard');
+        // check the width and height for the responsive design
+        if($(document).width() > $(document).height()){
+            $('.chessboard').css("grid-template-columns","repeat(8, calc(100vh/8)"); // width is larger than height
+            console.log($(document).width(),$(document).height())
         }else{
-            $('section').toggleClass('wd-cell cell');
-            $('section').toggleClass('wd-chessboard chessboard');
+            $('.chessboard').css("grid-template-columns","repeat(8, calc(100vw/8)"); // height is larger than width
+            console.log($(document).width(),$(document).height())
         }
     </script>
 </body>
