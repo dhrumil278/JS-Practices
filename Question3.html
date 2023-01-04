@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 3</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+    
+    <style>
+        .main-div{
+            width: 100%;
+            height: calc(100vh - 16px);
+            display: flex;
+            justify-content: center;
+        }
+        .wd-chessboard{
+            height: 100vh;
+            display: grid;
+            grid-template-columns: calc(100vw/8) calc(100vw/8) calc(100vw/8) calc(100vw/8) calc(100vw/8) calc(100vw/8) calc(100vw/8) calc(100vw/8) ;
+        }
+        .chessboard{
+            height: 100vh;
+            display: grid;
+            grid-template-columns: calc(100vh/8) calc(100vh/8) calc(100vh/8) calc(100vh/8) calc(100vh/8) calc(100vh/8) calc(100vh/8) calc(100vh/8) ;
+        }
+        .cell{
+            /* width: 50px; */
+            height: calc(100vh/8);
+            border: 2px solid red;
+        }
+        .wd-cell{
+            /* width: 50px; */
+            height: calc(100vw/8);
+            border: 2px solid red;
+        }
+        .black{
+            background-color: black;
+        }
+        .white{
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-div">
+        <div class="chessboard">
+
+        </div>
+    </div>
+    <script>
+        for(let i = 0; i < 8; i++){
+            for(let j = 0; j < 8; j++){
+                var x = $('.chessboard');
+                x.append(`<section class="cell white" id= "${i}${j}"></section>`);
+
+                if ((i+j)%2 == 0){
+                    $(`#${i}${j}`).toggleClass('white black');
+                }
+            }
+        }
+        if(screen.width > screen.height){
+            $('section').toggleClass('cell wd-cell');
+            $('section').toggleClass('chessboard wd-chessboard');
+        }else{
+            $('section').toggleClass('wd-cell cell');
+            $('section').toggleClass('wd-chessboard chessboard');
+        }
+    </script>
+</body>
+</html>
