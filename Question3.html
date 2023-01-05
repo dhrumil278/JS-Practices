@@ -19,11 +19,14 @@
             height: 100vh;
             display: flex;
             justify-content: center;
+            align-items: center;
         }
         .chessboard{
             /* height: 100vh; */
             border: 2px solid red;
             display: grid;
+            grid-template-columns: repeat(8, 12.5vh);
+            grid-template-rows: repeat(8, 12.5vh);
         }
         .cell{
             /* height: calc(100vh/8); */
@@ -54,18 +57,18 @@
                 }
             }
         }
-        // check the width and height for the responsive design
-        if($(document).width() > $(document).height()){
-            $('.chessboard').css("grid-template-columns","repeat(8, calc(100vh/8)"); // width is larger than height
-            $('.chessboard').css("grid-template-rows","repeat(8, calc(100vh/8)");
-            // $('.cell').css('height','calc(100vh/8)');
-            console.log($(document).width(),$(document).height())
-        }else{
-            $('.chessboard').css("grid-template-columns","repeat(8, calc(100vw/8)"); // height is larger than width
-            $('.chessboard').css("grid-template-rows","repeat(8, calc(100vw/8)"); 
-            // $('.cell').css('height','calc(100vw/8)');
-            console.log($(document).width(),$(document).height())
-        }
+        $(window).resize(function(){
+            // check the width and height for the responsive design
+            if($(document).width() > $(document).height()){
+                $('.chessboard').css("grid-template-columns","repeat(8, calc(100vh/8)"); // width is larger than height
+                $('.chessboard').css("grid-template-rows","repeat(8, calc(100vh/8)");
+
+            }else{
+                $('.chessboard').css("grid-template-columns","repeat(8, calc(100vw/8)"); // height is larger than width
+                $('.chessboard').css("grid-template-rows","repeat(8, calc(100vw/8)"); 
+                
+            }
+        });
     </script>
 </body>
 </html>
